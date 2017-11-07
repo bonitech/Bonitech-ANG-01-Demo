@@ -1,0 +1,55 @@
+<h1>Angular Workshop</h1>
+<ul>
+  <li>
+    <b>Name</b> : {{name}}</li>
+  <li>
+    <b>age</b> : {{age}}</li>
+  <li>
+    <b>email</b> : {{email}}</li>
+  <li>
+    <b>address</b> : {{address.street}}, {{address.city}}, {{address.province}}, {{address.postcode}}</li>
+</ul>
+
+<button (click)=toggleEdit()>edit profile</button>
+
+<div *ngIf="editable == true" class="box-border">
+  <h2>Edit Profile</h2>
+  <form>
+    <div>
+      <label for="name">
+        <b>Name: </b>
+      </label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+  </form>
+  <form>
+    <div>
+      <label for="age">
+        <b>Age: </b>
+      </label>
+      <input type="text" [(ngModel)]="age" name="age">
+    </div>
+  </form>
+  <form>
+    <div>
+      <label for="name">
+        <b>Email: </b>
+      </label>
+      <input type="text" [(ngModel)]="email" name="email">
+    </div>
+  </form>
+</div>
+
+<h2>Skills</h2>
+
+<form (submit)="addSkill(skill.value)">
+  <div>
+    <label for="skill">Skill:</label>
+    <input type="text" #skill placeholder="Add your skill">
+  </div>
+</form>
+<ul>
+  <li style="list-style-type: none;" *ngFor="let skill of skills; let i = index;">{{i+1}}. {{skill}}
+    <button (click)="removeSkill(skill)"> X </button>
+  </li>
+</ul>
